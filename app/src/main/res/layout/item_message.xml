@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_65sdp"
+    android:background="?android:selectableItemBackground"
+    tools:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_avatar"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="@dimen/_38sdp"
+        android:layout_height="@dimen/_38sdp"
+        android:layout_centerVertical="true"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/_19sdp"
+        app:contentPadding="0dp"
+        app:cardUseCompatPadding="false"
+        app:cardBackgroundColor="@color/gray_light">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="K"
+            android:textColor="@color/white"
+            style="@style/TextAppearance.AppCompat.Medium"
+            app:fontFamily="@font/nunito_bold"
+            android:gravity="center" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/ll_message"
+        android:layout_toEndOf="@id/cv_avatar"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/ll_counter"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/grey_dark"
+            app:fontFamily="@font/nunito_bold"
+            tools:text="Khanif Ikhsanudin" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_seek"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:contentDescription="@null"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_check"
+                android:tint="@color/grey_med_dark"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:includeFontPadding="false"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/grey_dark"
+                app:fontFamily="@font/nunito"
+                tools:text="Di hari yang suci, izinkanlah..." />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_counter"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:maxLines="1"
+            android:includeFontPadding="false"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/colorBaseLightOrange"
+            app:fontFamily="@font/nunito_semibold"
+            tools:text="19.57" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:id="@+id/tv_total_unread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:includeFontPadding="false"
+            android:background="@drawable/rectangle_round"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/white"
+            app:fontFamily="@font/nunito_semibold"
+            tools:text="128" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_alignStart="@id/ll_message"
+        android:layout_alignEnd="@id/ll_counter"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_light" />
+
+</RelativeLayout>

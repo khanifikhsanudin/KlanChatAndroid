@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#E6DEDE</color>
+    <color name="colorAccent">#FF5E08</color>
+
+    <color name="colorBaseBackground">#F5F2F2</color>
+    <color name="colorBaseOrange">#FF5E08</color>
+    <color name="colorBaseLightOrange">#FF6E21</color>
+    <color name="colorBaseDarkBlue">#0074BA</color>
+    <color name="colorBaseBlack">#363636</color>
+    <color name="colorBaseLightGray">#F2F2F5</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="grey_dark">#403C3C</color>
+    <color name="grey_med_dark">#71747E</color>
+    <color name="grey_light">#E9E9EF</color>
+    <color name="gray">#bbbbbb</color>
+    <color name="gray_dark">#999999</color>
+    <color name="gray_trans">#34999999</color>
+    <color name="gray_light">#dcdcdc</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="message_me">#F8EC82</color>
+    <color name="message_date">#BEDFFF</color>
+
+</resources>

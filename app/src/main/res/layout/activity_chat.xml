@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBaseBackground"
+    tools:context=".ui.chat.ChatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorBaseOrange"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBaseOrange"
+            android:theme="@style/ToolbarTheme"
+            app:title=""
+            app:titleTextColor="@color/white"
+            app:subtitleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_gravity="start"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp"
+                    app:cardCornerRadius="@dimen/_16sdp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_from_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@mipmap/ic_launcher_round"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:gravity="center"
+                        android:id="@+id/tv_from_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/white"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        app:fontFamily="@font/nunito_bold" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_from_name"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    tools:text="M Julius"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    app:fontFamily="@font/nunito_bold" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_chat"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/rl_message_frame"
+            android:background="@color/colorBaseBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_bubble_left"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_message_frame"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shadow_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/_45sdp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_message"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ll_send"
+                android:background="@null"
+                android:padding="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_45sdp"
+                android:textColor="@color/colorBaseBlack"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:fontFamily="@font/nunito"
+                android:inputType="textMultiLine"
+                android:maxHeight="@dimen/_190sdp"
+                android:hint="Pesan"
+                android:textColorHint="@color/grey_med_dark"
+                tools:text="Semoga lancar"/>
+
+            <LinearLayout
+                android:id="@+id/ll_send"
+                android:background="@drawable/ripple_circle"
+                android:layout_alignBottom="@id/ed_message"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="@dimen/_33sdp"
+                android:layout_height="@dimen/_33sdp"
+                android:padding="@dimen/_4sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_send"
+                    app:tint="@color/grey_med_dark" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_empty"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey_dark"
+        style="@style/TextAppearance.AppCompat.Medium"
+        app:fontFamily="@font/nunito_semibold"
+        android:text="Belum ada percakapan disini." />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_reload"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey_dark"
+            style="@style/TextAppearance.AppCompat.Medium"
+            app:fontFamily="@font/nunito_semibold"
+            android:text="Gagal memuat data percakapan." />
+
+        <Button
+            android:id="@+id/btn_reload"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coba lagi" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:useCompatPadding="true"
+        app:fabSize="mini"
+        app:elevation="@dimen/_2sdp"
+        app:rippleColor="@color/grey_med_dark"
+        app:borderWidth="0dp"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_arrow_down"
+        android:layout_marginBottom="@dimen/_60sdp"
+        android:layout_marginEnd="@dimen/_10sdp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
