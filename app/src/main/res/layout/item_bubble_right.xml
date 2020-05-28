@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_80sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/bubble_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:stateListAnimator="@null">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_text_right"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBaseBlack"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            app:fontFamily="@font/nunito"
+            tools:text="Data member baru berhasil tidak aaaa aa anak anma amna anmaa an. &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time_right"
+            android:layout_alignEnd="@id/tv_text_right"
+            android:layout_alignBottom="@id/tv_text_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/grey_med_dark"
+            style="@style/TextAppearance.AppCompat.Caption"
+            app:fontFamily="@font/nunito"
+            tools:text="11.42"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

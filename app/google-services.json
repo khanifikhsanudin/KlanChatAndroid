@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1085565366633",
+    "firebase_url": "https://klanchat.firebaseio.com",
+    "project_id": "klanchat",
+    "storage_bucket": "klanchat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085565366633:android:f954aa4af1d18481484df8",
+        "android_client_info": {
+          "package_name": "me.xanip.klanchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085565366633-e7t3h0erbin690f8hibm88t5bat8rttr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.xanip.klanchat",
+            "certificate_hash": "5523ca58ea57589bc3f24eb0438c188312e995af"
+          }
+        },
+        {
+          "client_id": "1085565366633-jtgjoij1ffvs36f7lpfftp4a52613g32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGeRWontkeTL7_fD8PHhSD54Dc7cd9f4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085565366633-jtgjoij1ffvs36f7lpfftp4a52613g32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
