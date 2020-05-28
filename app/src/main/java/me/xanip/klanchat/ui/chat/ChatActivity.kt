@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_chat.*
 import me.xanip.klanchat.R
 import me.xanip.klanchat.adapter.ChatAdapter
@@ -29,7 +28,6 @@ import me.xanip.klanchat.database.model.ChatData
 import me.xanip.klanchat.global.Constants
 import me.xanip.klanchat.global.Extras
 import me.xanip.klanchat.utils.PreferencesManager
-import me.xanip.klanchat.utils.Utility
 import me.xanip.klanchat.utils.stringLiveData
 import q.rorbin.badgeview.Badge
 import q.rorbin.badgeview.QBadgeView
@@ -48,6 +46,9 @@ class ChatActivity : AppCompatActivity(), ChatView.MainView {
     private var blockFabDown = false
     private var timeOutToReadAll = 1
     private var atRuntime = false
+
+    private val limitChat = 20
+    private var cursorChat: String = ""
 
     private lateinit var newMessageBadge: Badge
 
@@ -82,7 +83,7 @@ class ChatActivity : AppCompatActivity(), ChatView.MainView {
             val page = loadMoreData.page?.toIntOrNull()
             page?.let {
                 chatAdapter.setLoadingLoadMore(true)
-                presenter.fetchSeen(chatThread.thread, chatThread.member_id, loadMoreData.cursor, 20, it)
+                presenter.fetchSeen(chatThread.thread, chatThread.member_id, loadMoreData.cursor, limitChat, it)
             }
         }
         rv_chat.layoutManager = LinearLayoutManager(this)
@@ -201,12 +202,12 @@ class ChatActivity : AppCompatActivity(), ChatView.MainView {
 
         btn_reload.setOnClickListener {
             onStartProgress()
-            presenter.fetchSeen(chatThread.thread, chatThread.member_id, "", 20, 1)
+            presenter.fetchSeen(chatThread.thread, chatThread.member_id, "", limitChat, 1)
         }
 
         onStartProgress()
         blockFabDown = true
-        presenter.fetchSeen(chatThread.thread, chatThread.member_id, "", 20, 1)
+        presenter.fetchSeen(chatThread.thread, chatThread.member_id, "", limitChat, 1)
     }
 
     private fun isOnMinimalToBottom(): Boolean {
@@ -270,9 +271,16 @@ class ChatActivity : AppCompatActivity(), ChatView.MainView {
         onStopProgress()
         chatAdapter.setLoadingLoadMore(false)
         chatAdapter.removeLoadmore()
+
         val chats = mutableListOf<Any>()
         if (!response.data.isNullOrEmpty()) {
             tv_empty.visibility = View.GONE
+
+            if (!firstSync) {
+                val indexC: Int = if (response.data.size > limitChat) limitChat else response.data.size
+                cursorChat = response.data[indexC - 1].created_at?:""
+            }
+
             chats.addAll(response.data)
             val indexUread = response.data.indexOfFirst { it.me == false && it.seen?:0 <= 0 }
             if (indexUread >= 0) {
@@ -281,7 +289,7 @@ class ChatActivity : AppCompatActivity(), ChatView.MainView {
             }
             if (!response.next.isNullOrEmpty()) {
                 chatAdapter.removeLoadmore()
-                chats.add(0, ChatAdapter.LoadMoreData(response.next, response.cursor))
+                chats.add(0, ChatAdapter.LoadMoreData(response.next, cursorChat))
             }
             if (chatAdapter.itemCount < 1 && response.data.last().me == true && response.data.last().seen == 1) {
                 chats.add("Dilihat")

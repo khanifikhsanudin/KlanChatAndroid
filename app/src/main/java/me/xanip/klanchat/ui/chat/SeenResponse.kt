@@ -7,6 +7,5 @@ data class SeenResponse(
     val message: String,
     val prev: String?,
     val next: String?,
-    val cursor: String?,
     val data: List<ChatData>?
 )
